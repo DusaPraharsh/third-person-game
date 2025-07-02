@@ -11,6 +11,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     public float aimSensitivity;
     public LayerMask aimColliderLayerMask = new LayerMask();
     public Transform debugTransform;
+    public Transform pfBulletProjectile;
+    public Transform spawnBulletPosition;
 
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
@@ -51,6 +53,13 @@ public class ThirdPersonShooterController : MonoBehaviour
             thirdPersonController.SetSensitivity(normalSensitivity);
             crosshair.SetActive(false);
             thirdPersonController.SetRotationOnMove(true);
+        }
+
+        if (starterAssetsInputs.shoot)
+        {
+            Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+            Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            starterAssetsInputs.shoot = false;
         }
     }
 }
