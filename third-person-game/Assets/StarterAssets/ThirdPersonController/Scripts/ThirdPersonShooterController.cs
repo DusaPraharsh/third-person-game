@@ -2,6 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.InputSystem;
+using System;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
@@ -16,11 +17,13 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
+    private Animator animator;
 
     private void Awake()
     {
         thirdPersonController = GetComponent<ThirdPersonController>();
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -40,6 +43,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             thirdPersonController.SetSensitivity(aimSensitivity);
             crosshair.SetActive(true);
             thirdPersonController.SetRotationOnMove(false);
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
@@ -53,6 +57,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             thirdPersonController.SetSensitivity(normalSensitivity);
             crosshair.SetActive(false);
             thirdPersonController.SetRotationOnMove(true);
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
         }
 
         if (starterAssetsInputs.shoot)

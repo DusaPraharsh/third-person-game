@@ -21,11 +21,11 @@ public class BulletProjectile : MonoBehaviour
     {
         if (other.GetComponent<BulletTarget>() != null)
         {
-            Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
+            Instantiate(vfxHitRed, transform.position, Quaternion.identity);
         }
         else
         {
-            Instantiate(vfxHitRed, transform.position, Quaternion.identity);
+            Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
     }
