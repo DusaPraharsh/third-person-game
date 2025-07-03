@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6863857337172796870}
   - component: {fileID: 6863857337172796864}
   - component: {fileID: 6863857337172796871}
-  - component: {fileID: 6047477544009980842}
+  - component: {fileID: 5870707214770035296}
   m_Layer: 0
   m_Name: pfBulletProjectile
   m_TagString: Untagged
@@ -83,7 +83,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6047477544009980842
+--- !u!114 &5870707214770035296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
